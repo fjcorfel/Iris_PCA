@@ -36,7 +36,7 @@ Y = X_standardized @ eigenvectors
 explained_variance = eigenvalues / np.sum(eigenvalues)
 
 # Print the explained variance
-print(f"Explained variance by each PC: ")
+print(f"Explained variance by each principal component:")
 for i, ratio in enumerate(explained_variance):
     print(f"PC{i + 1}: {ratio * 100:.2f}%")
 
