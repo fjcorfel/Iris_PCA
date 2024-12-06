@@ -6,6 +6,9 @@ from sklearn import datasets as ds
 # Load the iris dataset
 data = ds.load_iris(as_frame=True).frame
 
+# Define the flower species
+species_names = ["I. setosa", "I. versicolor", "I. virginica"]
+
 # Select the features
 # In X we ignore the target variable (flower species)
 X = data.iloc[:, 0:-1].values
@@ -41,10 +44,10 @@ for i, ratio in enumerate(explained_variance):
     print(f"PC{i + 1}: {ratio * 100:.2f}%")
 
 # Plot the PCA
-for label in np.unique(y):
+for label, species in zip(np.unique(y), species_names):
     plt.scatter(Y[y == label, 0],
                 Y[y == label, 1],
-                label=label)
+                label=rf"$\it{{{species}}}$")
 
 plt.xlabel(f"PC1 ({explained_variance[0] * 100:.2f}% of explained variance)")
 plt.ylabel(f"PC2 ({explained_variance[1] * 100:.2f}% of explained variance)")
