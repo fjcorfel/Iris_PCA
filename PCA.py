@@ -1,3 +1,17 @@
+##############################################################################
+# PCA.py
+# 
+# Análisis de Componentes Principales (PCA)
+# Programación y Técnicas Computacionales Avanzadas
+# 
+# Este programa realiza un análisis de componentes principales (PCA) sobre el
+# conjunto de datos de la flor Iris.
+#
+# Autor: Francisco Javier Cordero Felipe
+# Fecha: 20/12/2024
+# Versión: 1.0
+##############################################################################
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
