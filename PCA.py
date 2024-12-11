@@ -5,13 +5,15 @@
 # Programación y Técnicas Computacionales Avanzadas
 # 
 # Este programa realiza un análisis de componentes principales (PCA) sobre el
-# conjunto de datos de la flor Iris. Se muestra la representación gráfica 2D de
-# las dos primeras componentes principales (PC1 y PC2) y  3D de las tres 
-# primeras componentes principales (PC1, PC2 y PC3).
+# conjunto de datos de la flor Iris. Por consola se muestra el porcentaje de
+# varianza explicada por cada componente principal. Además, se generan dos
+# gráficas: una en 2D y otra en 3D, mostrando la representación gráfica de las
+# las dos primeras componentes principales y las tres primeras componentes
+# principales, respectivamente.
 #
 # Autor: Francisco Javier Cordero Felipe
 # Fecha: 20/12/2024
-# Versión: 1.1
+# Versión: 1.2
 ##############################################################################
 
 import numpy as np
@@ -60,31 +62,33 @@ for i, ratio in enumerate(explained_variance):
     print(f"* PC{i + 1}: {ratio * 100:.2f}%")
 
 # Plot the PCA
-# Plot 2d projection
+fig = plt.figure(figsize=(12, 6))
+
+# 2D plot
+ax1 = fig.add_subplot(121)
 for label, species in zip(np.unique(y), species_names):
-    plt.scatter(Y[y == label, 0],
+    ax1.scatter(Y[y == label, 0],
                 Y[y == label, 1],
                 label=rf"$\it{{{species}}}$")
 
-plt.xlabel(f"PC1 ({explained_variance[0] * 100:.2f}%)")
-plt.ylabel(f"PC2 ({explained_variance[1] * 100:.2f}%)")
-plt.title("PCA of the Iris Dataset with Explained Variance")
-plt.legend()
-plt.grid()
-plt.show()
+ax1.set_xlabel(f"PC1 ({explained_variance[0] * 100:.2f}%)")
+ax1.set_ylabel(f"PC2 ({explained_variance[1] * 100:.2f}%)")
+ax1.set_title("2D PCA - Iris Dataset")
+ax1.legend()
+ax1.grid()
 
-# Plot 3d projection
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
+# 3D plot
+ax2 = fig.add_subplot(122, projection='3d')
 for label, species in zip(np.unique(y), species_names):
-    ax.scatter(Y[y == label, 0],
+    ax2.scatter(Y[y == label, 0],
                Y[y == label, 1],
                Y[y == label, 2],
                label=rf"$\it{{{species}}}$")
     
-ax.set_xlabel(f"PC1 ({explained_variance[0] * 100:.2f}%)")
-ax.set_ylabel(f"PC2 ({explained_variance[1] * 100:.2f}%)")
-ax.set_zlabel(f"PC3 ({explained_variance[2] * 100:.2f}%)")
-ax.set_title("PCA of the Iris Dataset with Explained Variance")
-ax.legend()
+ax2.set_xlabel(f"PC1 ({explained_variance[0] * 100:.2f}%)")
+ax2.set_ylabel(f"PC2 ({explained_variance[1] * 100:.2f}%)")
+ax2.set_zlabel(f"PC3 ({explained_variance[2] * 100:.2f}%)")
+ax2.set_title("3D PCA - Iris Dataset")
+ax2.legend()
+
 plt.show()
