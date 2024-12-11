@@ -11,7 +11,7 @@
 #
 # Autor: Francisco Javier Cordero Felipe
 # Fecha: 20/12/2024
-# Versión: 1.0
+# Versión: 1.1
 ##############################################################################
 
 import numpy as np
